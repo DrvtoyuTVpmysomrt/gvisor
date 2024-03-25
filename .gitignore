@@ -1,3 +1,5 @@
+.idea
+.vscode
 # Generated bazel symlinks.
 /bazel-*
 # Generated build event file.
