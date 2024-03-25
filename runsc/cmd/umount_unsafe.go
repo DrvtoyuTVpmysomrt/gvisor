@@ -16,6 +16,7 @@ package cmd
 
 import (
 	"context"
+	"gvisor.dev/gvisor/pkg/log"
 	"os"
 	"syscall"
 	"unsafe"
@@ -54,6 +55,7 @@ func (u *Umount) SetFlags(f *flag.FlagSet) {
 
 // Execute implements subcommands.Command.Execute.
 func (u *Umount) Execute(_ context.Context, f *flag.FlagSet, args ...any) subcommands.ExitStatus {
+	log.Infof("runsc : umount unsafe exec")
 	if f.NArg() == 0 || f.NArg() > 1 {
 		f.Usage()
 		return subcommands.ExitUsageError

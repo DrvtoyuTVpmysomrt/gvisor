@@ -215,6 +215,7 @@ func Main(version string) {
 	log.SetTarget(e)
 
 	log.Infof("***************************")
+	log.Infof("command line is %s", flag.CommandLine.Name())
 	log.Infof("Args: %s", os.Args)
 	log.Infof("Version %s", version)
 	log.Infof("GOOS: %s", runtime.GOOS)

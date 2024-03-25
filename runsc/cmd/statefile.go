@@ -17,6 +17,7 @@ package cmd
 import (
 	"context"
 	"fmt"
+	"gvisor.dev/gvisor/pkg/log"
 	"os"
 
 	"github.com/google/subcommands"
@@ -61,6 +62,7 @@ func (s *Statefile) SetFlags(f *flag.FlagSet) {
 
 // Execute implements subcommands.Command.Execute.
 func (s *Statefile) Execute(_ context.Context, f *flag.FlagSet, args ...any) subcommands.ExitStatus {
+	log.Infof("runsc : statefile exec")
 	// Check arguments.
 	if s.list && s.get != "" {
 		util.Fatalf("error: can't specify -list and -get simultaneously.")

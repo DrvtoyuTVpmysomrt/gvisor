@@ -17,6 +17,7 @@ package cmd
 import (
 	"context"
 	"fmt"
+	"gvisor.dev/gvisor/pkg/log"
 
 	"github.com/google/subcommands"
 	"gvisor.dev/gvisor/pkg/sentry/control"
@@ -58,6 +59,7 @@ func (r *WriteControl) SetFlags(f *flag.FlagSet) {}
 
 // Execute implements subcommands.Command.Execute.
 func (r *WriteControl) Execute(_ context.Context, f *flag.FlagSet, args ...any) subcommands.ExitStatus {
+	log.Infof("runsc : write control exec")
 	if f.NArg() < 5 {
 		f.Usage()
 		return subcommands.ExitUsageError

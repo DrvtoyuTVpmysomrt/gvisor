@@ -16,9 +16,9 @@ package cmd
 
 import (
 	"context"
-
 	"github.com/google/subcommands"
 	"golang.org/x/sys/unix"
+	"gvisor.dev/gvisor/pkg/log"
 	"gvisor.dev/gvisor/runsc/cmd/util"
 	"gvisor.dev/gvisor/runsc/config"
 	"gvisor.dev/gvisor/runsc/container"
@@ -59,11 +59,11 @@ func (r *Run) SetFlags(f *flag.FlagSet) {
 
 // Execute implements subcommands.Command.Execute.
 func (r *Run) Execute(_ context.Context, f *flag.FlagSet, args ...any) subcommands.ExitStatus {
+	log.Infof("runsc : run exec")
 	if f.NArg() != 1 {
 		f.Usage()
 		return subcommands.ExitUsageError
 	}
-
 	id := f.Arg(0)
 	conf := args[0].(*config.Config)
 	waitStatus := args[1].(*unix.WaitStatus)

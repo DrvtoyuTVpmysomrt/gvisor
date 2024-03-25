@@ -17,6 +17,7 @@ package cmd
 import (
 	"bufio"
 	"context"
+	"gvisor.dev/gvisor/pkg/log"
 	"os"
 	"strconv"
 	"strings"
@@ -62,6 +63,7 @@ func (c *Symbolize) SetFlags(f *flag.FlagSet) {
 
 // Execute implements subcommands.Command.Execute.
 func (c *Symbolize) Execute(_ context.Context, f *flag.FlagSet, args ...any) subcommands.ExitStatus {
+	log.Infof("runsc : symbolize exec")
 	if f.NArg() != 0 {
 		f.Usage()
 		return subcommands.ExitUsageError

@@ -68,6 +68,7 @@ func (i *Install) SetFlags(fs *flag.FlagSet) {
 
 // Execute implements subcommands.Command.Execute.
 func (i *Install) Execute(_ context.Context, f *flag.FlagSet, _ ...any) subcommands.ExitStatus {
+	log.Printf("runsc : install exec")
 	// Grab the name and arguments.
 	i.runtimeArgs = f.Args()
 	testFlags := flag.NewFlagSet("test", flag.ContinueOnError)

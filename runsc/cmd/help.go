@@ -17,8 +17,8 @@ package cmd
 import (
 	"context"
 	"fmt"
-
 	"github.com/google/subcommands"
+	"gvisor.dev/gvisor/pkg/log"
 	"gvisor.dev/gvisor/runsc/flag"
 )
 
@@ -62,6 +62,7 @@ func (h *Help) SetFlags(*flag.FlagSet) {}
 
 // Execute implements subcommands.Command.Execute.
 func (h *Help) Execute(ctx context.Context, f *flag.FlagSet, args ...any) subcommands.ExitStatus {
+	log.Infof("runsc : help exec")
 	switch f.NArg() {
 	case 0:
 		fmt.Fprintf(h.cdr.Output, "Usage: %s <flags> <subcommand> <subcommand args>\n\n", h.cdr.Name())

@@ -125,11 +125,11 @@ func (c *Do) SetFlags(f *flag.FlagSet) {
 
 // Execute implements subcommands.Command.Execute.
 func (c *Do) Execute(_ context.Context, f *flag.FlagSet, args ...any) subcommands.ExitStatus {
+	log.Infof("runsc : do exec")
 	if len(f.Args()) == 0 {
 		f.Usage()
 		return subcommands.ExitUsageError
 	}
-
 	conf := args[0].(*config.Config)
 	waitStatus := args[1].(*unix.WaitStatus)
 

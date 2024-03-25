@@ -17,6 +17,7 @@ package cmd
 import (
 	"context"
 	"encoding/json"
+	"gvisor.dev/gvisor/pkg/log"
 	"os"
 
 	"github.com/google/subcommands"
@@ -61,6 +62,7 @@ func (wt *Wait) SetFlags(f *flag.FlagSet) {
 // Execute implements subcommands.Command.Execute. It waits for a process in a
 // container to exit before returning.
 func (wt *Wait) Execute(_ context.Context, f *flag.FlagSet, args ...any) subcommands.ExitStatus {
+	log.Infof("runsc : wait exec")
 	if f.NArg() != 1 {
 		f.Usage()
 		return subcommands.ExitUsageError

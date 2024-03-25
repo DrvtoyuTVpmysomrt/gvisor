@@ -106,6 +106,7 @@ func (ex *Exec) SetFlags(f *flag.FlagSet) {
 // Execute implements subcommands.Command.Execute. It starts a process in an
 // already created container.
 func (ex *Exec) Execute(_ context.Context, f *flag.FlagSet, args ...any) subcommands.ExitStatus {
+	log.Infof("runsc : exec exec")
 	conf := args[0].(*config.Config)
 	e, id, err := ex.parseArgs(f, conf.EnableRaw)
 	if err != nil {

@@ -17,6 +17,7 @@ package cmd
 import (
 	"context"
 	"fmt"
+	"gvisor.dev/gvisor/pkg/log"
 	"os"
 
 	"github.com/google/subcommands"
@@ -48,6 +49,7 @@ func (*Platforms) SetFlags(f *flag.FlagSet) {}
 
 // Execute implements subcommands.Command.Execute.
 func (*Platforms) Execute(_ context.Context, f *flag.FlagSet, args ...any) subcommands.ExitStatus {
+	log.Infof("runsc : platforms exec")
 	for _, p := range platform.List() {
 		fmt.Fprintf(os.Stdout, "%s\n", p)
 	}

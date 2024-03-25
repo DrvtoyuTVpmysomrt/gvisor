@@ -66,12 +66,11 @@ func (c *Checkpoint) SetFlags(f *flag.FlagSet) {
 
 // Execute implements subcommands.Command.Execute.
 func (c *Checkpoint) Execute(_ context.Context, f *flag.FlagSet, args ...any) subcommands.ExitStatus {
-
+	log.Infof("runsc : check point exec")
 	if f.NArg() != 1 {
 		f.Usage()
 		return subcommands.ExitUsageError
 	}
-
 	id := f.Arg(0)
 	conf := args[0].(*config.Config)
 	waitStatus := args[1].(*unix.WaitStatus)

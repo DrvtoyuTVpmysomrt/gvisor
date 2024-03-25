@@ -50,6 +50,7 @@ func (*State) SetFlags(*flag.FlagSet) {}
 
 // Execute implements subcommands.Command.Execute.
 func (*State) Execute(_ context.Context, f *flag.FlagSet, args ...any) subcommands.ExitStatus {
+	log.Infof("runsc : state exec")
 	if f.NArg() != 1 {
 		f.Usage()
 		return subcommands.ExitUsageError

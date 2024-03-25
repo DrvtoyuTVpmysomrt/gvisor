@@ -16,6 +16,7 @@ package cmd
 
 import (
 	"context"
+	"gvisor.dev/gvisor/pkg/log"
 
 	"github.com/google/subcommands"
 	"gvisor.dev/gvisor/runsc/cmd/util"
@@ -48,6 +49,7 @@ func (*Pause) SetFlags(*flag.FlagSet) {
 
 // Execute implements subcommands.Command.Execute.
 func (*Pause) Execute(_ context.Context, f *flag.FlagSet, args ...any) subcommands.ExitStatus {
+	log.Infof("runsc : pause exec")
 	if f.NArg() != 1 {
 		f.Usage()
 		return subcommands.ExitUsageError

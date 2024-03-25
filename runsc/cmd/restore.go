@@ -16,6 +16,7 @@ package cmd
 
 import (
 	"context"
+	"gvisor.dev/gvisor/pkg/log"
 	"path/filepath"
 
 	"github.com/google/subcommands"
@@ -72,6 +73,7 @@ func (r *Restore) SetFlags(f *flag.FlagSet) {
 
 // Execute implements subcommands.Command.Execute.
 func (r *Restore) Execute(_ context.Context, f *flag.FlagSet, args ...any) subcommands.ExitStatus {
+	log.Infof("runsc : restore exec")
 	if f.NArg() != 1 {
 		f.Usage()
 		return subcommands.ExitUsageError

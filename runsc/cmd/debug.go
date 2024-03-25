@@ -86,9 +86,9 @@ func (d *Debug) SetFlags(f *flag.FlagSet) {
 
 // Execute implements subcommands.Command.Execute.
 func (d *Debug) Execute(_ context.Context, f *flag.FlagSet, args ...any) subcommands.ExitStatus {
+	log.Infof("runsc : debug exec")
 	var c *container.Container
 	conf := args[0].(*config.Config)
-
 	if conf.ProfileBlock != "" || conf.ProfileCPU != "" || conf.ProfileHeap != "" || conf.ProfileMutex != "" {
 		return util.Errorf("global -profile-{block,cpu,heap,mutex} flags have no effect on runsc debug. Pass runsc debug -profile-{block,cpu,heap,mutex} instead")
 	}

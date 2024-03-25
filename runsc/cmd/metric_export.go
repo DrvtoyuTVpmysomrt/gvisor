@@ -18,6 +18,7 @@ import (
 	"bufio"
 	"context"
 	"fmt"
+	"gvisor.dev/gvisor/pkg/log"
 	"os"
 
 	"github.com/google/subcommands"
@@ -53,6 +54,7 @@ func (m *MetricExport) SetFlags(f *flag.FlagSet) {
 
 // Execute implements subcommands.Command.Execute.
 func (m *MetricExport) Execute(ctx context.Context, f *flag.FlagSet, args ...any) subcommands.ExitStatus {
+	log.Infof("runsc : metric exec")
 	if f.NArg() < 1 {
 		f.Usage()
 		return subcommands.ExitUsageError

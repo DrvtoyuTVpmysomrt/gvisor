@@ -17,6 +17,7 @@ package cmd
 import (
 	"context"
 	"encoding/json"
+	"gvisor.dev/gvisor/pkg/log"
 	"io"
 	"os"
 	"path/filepath"
@@ -181,6 +182,7 @@ func (s *Spec) SetFlags(f *flag.FlagSet) {
 
 // Execute implements subcommands.Command.Execute.
 func (s *Spec) Execute(_ context.Context, f *flag.FlagSet, args ...any) subcommands.ExitStatus {
+	log.Infof("runsc : spec exec")
 	// Grab the arguments.
 	containerArgs := f.Args()
 	if len(containerArgs) == 0 {

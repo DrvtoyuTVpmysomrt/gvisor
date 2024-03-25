@@ -19,6 +19,7 @@ import (
 	"encoding/csv"
 	"encoding/json"
 	"fmt"
+	"gvisor.dev/gvisor/pkg/log"
 	"io"
 	"os"
 	"sort"
@@ -105,6 +106,7 @@ func (s *Syscalls) SetFlags(f *flag.FlagSet) {
 
 // Execute implements subcommands.Command.Execute.
 func (s *Syscalls) Execute(context.Context, *flag.FlagSet, ...any) subcommands.ExitStatus {
+	log.Infof("runsc : syscalls exec")
 	out, ok := outputMap[s.format]
 	if !ok {
 		util.Fatalf("Unsupported output format %q", s.format)
